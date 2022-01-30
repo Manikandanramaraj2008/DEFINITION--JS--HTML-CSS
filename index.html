@@ -14,7 +14,180 @@
 
 <body>
     <script>
+
+DATA TYPES:
+ ********************
+
+
+
+ Variable: var,let,const
+ *********************
+ Variable means anything that can vary. 
+ In JavaScript, a variable stores the data value that can be changed later on. ...
+  The default value of variables that do not have any value is undefined. 
+  You can assign a value to a variable using the = operator when you declare it 
+  or after the declaration and before accessing it.
+**********************************************************************
+  var:
+  *****************
+   This keyword is used to declare variable globally. 
+  If you used this keyword to declare variable then the 
+  variable can accessible globally and changeable also.
+   It is good for a short length of codes,
+    if the codes get huge then you will get confused
+***************************************************************
+    Let: 
+    ******************
+    This keyword is used to declare variable locally. 
+    If you used this keyword to declare variable then the variable can accessible
+     locally and it is changeable as well. It is good if the code gets huge.
+     
+     let is preferable to var because it reduces the scope in which an identifier is visible. 
+     It allows us to safely declare variables at the site of first use.
+
+     Redeclarations
+
+Redeclaring the same variable within the same function or block scope
+ raises a SyntaxError.
+
+if (x) {
+  let foo;
+  let foo; // SyntaxError thrown.
+}
+
+At the top level of programs and functions, let, unlike var, 
+does not create a property on the global object. For example:
+
+var x = 'global';
+let y = 'global';
+console.log(this.x); // "global"
+console.log(this.y); // undefined
+
+ Let Vs Var
+ **********************
+
+ Var and let are both used for variable declaration in javascript 
+ but the difference between them is that 
+ var is function scoped and let is block scoped.
+
+ ***************************************************************************
+
+ let is introduced in Ecma Script 6 - the new javascript version - 
+ which is still in development at the time of this writing.
+  Therefore, using var will get you across more browsers for the time being. 
+***********************************************************************************
+
+ Input:
+console.log(x);
+var x=5;
+console.log(x);
+Output:
+undefined
+5
+
+When used inside a block, let limits the variable's scope to that block.
+ Note the difference between var, whose scope is inside the function
+  where it is declared.
+
+var a = 1;
+var b = 2;
+
+if (a === 1) {
+  var a = 11; // the scope is global
+  let b = 22; // the scope is inside the if-block
+
+  console.log(a);  // 11
+  console.log(b);  // 22
+}
+
+console.log(a); // 11
+c
+
+onsole.log(b); // 2
+
+
+
+Hoisting
+******************
+
+In JavaScript, Hoisting is the default behavior of moving all 
+the declarations at the top of the scope before code execution. 
+Basically, it gives us an advantage that no matter 
+where functions and variables are declared, they are moved to the top of their 
+scope regardless of whether their scope is global or local.
+
+shadowing
+*********************
+
+Variable shadowing occurs when a variable of an inner scope 
+is defined with the same name as a variable in the outer scope. ...
+ In the inner scope, both variables' scope overlap.
+
+let getSum =function(num1,num2){
+    let sum=num1+num2
+    return sum;
+}
+getSum(2,3)
+
+*********************************************************************
+
+ String
+ ###########*++++++++++++++++++++++++++**************
+
+ The String object is used to represent and manipulate a sequence of characters
+
+ *********************************************************************
+ Strings are useful for holding data that can be represented in text form.
+  Some of the most-used operations on strings are to check their length, 
+  to build and concatenate them using the + and += string operators,
+   checking for the existence or location of substrings with the indexOf() method,
+ or extracting substrings with the substring() method. 
+ ***********************************************************************************
+
+comparing string
+*******************************
+
+let a = 'a'
+let b = 'b'
+if (a < b) { // true
+  console.log(a + ' is less than ' + b)
+} else if (a > b) {
+  console.log(a + ' is greater than ' + b)
+} else {
+  console.log(a + ' and ' + b + ' are equal.')
+}
+
+String primitives and String objects
+
+String primitives and String objects also give different results
+ when using eval(). Primitives passed to eval are treated as source code; 
+ String objects are treated as all other objects are, by returning the object.
+  For example:
+
+let s1 = '2 + 2'              // creates a string primitive
+let s2 = new String('2 + 2')  // creates a String object
+console.log(eval(s1))         // returns the number 4
+console.log(eval(s2))         // returns the string "2 + 2"
+
+
+String()
+
+    Creates a new String object. It performs type conversion 
+    when called as a function, rather than as a constructor, 
+    which is usually more useful.
+********************
         
+FUNCTION
+ ********************************************************************
+ Why Functions?
+ Functions are one of the fundamental building blocks in JavaScript.
+  A function in JavaScript is similar to a procedure—a set of statements 
+ that performs a task or calculates a value,
+
+ You can reuse code: Define the code once, and use it many times.
+ 
+ You  can use the same code many times with different arguments,
+  to produce different results.
 
 //         // IIFE FUNCTION:(Immediately Invoked Functin Expression)
 
@@ -57,6 +230,18 @@
 // }
 // log(multiply(1)(2)(3)) // 6
 
+// ARRAY Map
+// *********************
+
+const arr = ['1', '2', '3'];
+// callback function takes 3 parameters
+// the current value of an array as the first parameter
+// the position of the current value in an array as the second parameter
+// the original source array as the third parameter
+const cb = (str, i, origin) => {
+  console.log(`${i}: ${Number(str)} / ${origin}`);
+};
+arr.map(cb);
 
   // REST PARAMETERS
 // ********************
@@ -72,6 +257,8 @@
 // strongly typed programming language that build on JS
 // // add additional syntax to js.
 // // which runs anywhere js run in the browser without additional coding.
+// the goal of TypeScript is to help catch mistakes early through a type system 
+// and to make JavaScript development more efficient
 
 // // Template literal:
 // // are literal delimited with backticks~ allowing embedded expressions
@@ -178,7 +365,7 @@
 //     console.log("you can vote")
 // }else{
 //     console.log("you can not vote")
-// }
+//  }
 
 //   / CRUD OPERATION
 // ***************************
@@ -636,7 +823,278 @@
 // it is the keyword which will override all the previous value.
 // and the particular property will display on the screen.
 
+What is the difference between classes and IDs in CSS?  
 
+IDs Meant to be unique within the document. Can be used to identify an element 
+when linking using a fragment identifier. Elements can only have one id attribute.
+
+Classes Can be reused on multiple elements within the document. Mainly for styling and targeting elements.
+
+Explain the CSS “box model” and the layout components that it consists of  
+
+The CSS box model is a rectangular layout paradigm for HTML elements that consists of the following:
+Content - The content of the box, where text and images appear
+Padding - A transparent area surrounding the content (i.e., the amount of space between the border and the content)
+Border - A border surrounding the padding (if any) and content
+Margin - A transparent area surrounding the border (i.e., the amount of space between the border and any neighboring elements)
+
+
+What is Sass?  
+
+Sass or Syntactically Awesome StyleSheets is a CSS preprocessor that adds power
+ and elegance to the basic language.
+ It allows you to use variables, nested rules, mixins, inline imports, and more,
+  all with a fully CSS-compatible syntax. Sass helps keep large stylesheets well-organized,
+   and get small stylesheets up and running quickly.
+A CSS preprocessor is a scripting language that extends CSS by allowing
+ developers to write code in one language and then compile it
+
+ 14.What is the difference between Pseudo-classes and pseudo-elements?
+A pseudo-class is a selector that assists in the selection of something that cannot be expressed by a simple selector, for
+example :hover. A pseudo-element however allows us to create items that do not normally exist in the document tree, for
+example ::after.
+1) Pseudo-classes: Pseudo-classes select regular elements but under certain conditions, like when their position relative to
+siblings or when they’re under a particular state.
+a) Dynamic pseudo-classes
+:link
+:visited
+:hover
+:active
+:focus
+b) UI element states pseudo-classes
+:enabled
+:disabled
+:checked
+c) Structural pseudo-classes
+:first-child
+:nth-child(n)
+:nth-last-child(n)
+:nth-of-type(n)
+:nth-last-of-type(n)
+:last-child
+:first-of-type
+:last-of-type
+:only-child
+:only-of-type
+:root
+:empty
+2) Pseudo-elements: Pseudo-elements effectively create new elements that are not specified in the markup of the document
+and can be manipulated much :enabled
+:disabled
+:checked
+c) Structural pseudo-classes
+:first-child
+:nth-child(n)
+:nth-last-child(n)
+:nth-of-type(n)
+:nth-last-of-type(n)
+:last-child
+:first-of-type
+:last-of-type
+:only-child
+:only-of-type
+:root
+:empty
+2) Pseudo-elements: Pseudo-elements effectively create new elements that are not specified in the markup of the document
+and can be manipulated much:enabled
+:disabled
+:checked
+c) Structural pseudo-classes
+:first-child
+:nth-child(n)
+:nth-last-child(n)
+:nth-of-type(n)
+:nth-last-of-type(n)
+:last-child
+:first-of-type
+:last-of-type
+:only-child
+:only-of-type
+:root
+:empty
+2) Pseudo-elements: Pseudo-elements effectively create new elements that are not specified in the markup of the document
+and can be manipulated much like a regular element.
+
+::before
+::after
+::first-letter
+::first-line
+::selection
+
+
+11.What are the different position states in CSS?
+There are 4 position states in CSS:
+1) Absolute
+2) Relative
+3) Fixed
+4) Static
+12.How the position states are differ from each other and explain them?
+1) Absolute: Place an element exactly where you want to place it. absolute position is actually set relative to the element&#39;s
+parent.
+if no parent available then relatively place to the page itself.
+2)Relative: It is used to set position an element relative to itself (from where the element would be placed, if u don&#39;t apply
+relative positioning).
+
+Ex: if u set position relative to an element and set top: 10px, it will move 10px down from where it would be normally.
+3)Fixed: Element is positioned relative to viewport or the browser window itself. viewport doesn&#39;t changed if you scroll and
+hence fixed element will stay right in the same position.
+4)Static: Element will be positioned based on the normal flow of the document. usually, u will use position static to remove
+other position might be applied to an element.
+
+16.What is the difference between classes and IDs in CSS?
+IDs — Meant to be unique within the document. Can be used to identify an element when linking using a fragment identifier.
+Elements can only have one id attribute.
+Classes — Can be reused on multiple elements within the document. Mainly for styling and targeting elements.
+
+17.What is the difference between inline, inline-block, and block?
+
+Block Element: The block elements always start on a new line. They will also take space for an entire row or width. List of
+block elements are &lt;div&gt;, &lt;p&gt;.
+Inline Elements: Inline elements don&#39;t start on a new line, they appear on the same line as the content and tags beside them.
+Some examples of inline elements are &lt;a&gt;, &lt;span&gt; , &lt;strong&gt;, and &lt;img&gt; tags.
+Inline Block Elements: Inline-block elements are similar to inline elements, except they can have padding and margins
+added on all four sides.
+
+20.What is the grid system?
+CSS Grid Layout is the most powerful layout system available in CSS. It is said to be a 2-dimensional system,
+meaning it can handle both columns and rows, unlike flexbox which is largely a 1-dimensional system.
+
+
+
+21.What are the different ways to hide the element using CSS?
+Display property(display: none): It’s not available for screen readers. The element will not exist in the DOM if display:
+none is used.
+Visibility property(visibility: hidden): will take up the space of the element. It will be available to screen reader users. The
+element will actually be present in the DOM, but not shown on the screen.
+Position property (position: absolute): Make it available outside the screen.
+
+
+
+23.Difference between CSS grid vs flexbox?
+CSS Grid Layout is a two-dimensional system, meaning it can handle both columns and rows. Grid layout is intended for
+larger-scale layouts which aren’t linear in design.
+CSS Flexbox is largely a one-dimensional system (either in a column or a row). Flexbox layout is most appropriate to
+components of an application.
+
+
+25.Can you name the four types of @media properties?
+All → It’s the default property. Used for all media-type devices.
+Screen → Used for computer screen, mobile screen.
+Print → Used for printers.
+Speech → Used for screen readers.
+
+25.Can you name the four types of @media properties?
+All → It’s the default property. Used for all media-type devices.
+Screen → Used for computer screen, mobile screen.
+Print → Used for printers.
+Speech → Used for screen readers.
+
+40.What is the difference between padding and margin?
+Margin:
+The margin is the property by which we can create space around elements.
+We can even create space to the exterior defined borders.
+
+margin-top
+margin-right
+margin-bottom
+margin-left
+Values of Margin Property:
+Auto – Using this property browser calculates the margin.
+Length – It sets the margin values in px,pt,cm etc.
+% – It sets the width % of the element.
+Inherit – By this property we can inherit the margin property from the parent element.
+Padding:
+Padding is the property by which we can generate space around an element’s content as well as
+inside any known border.
+--Negative values are not allowed in padding.
+
+Padding properties:
+Padding-top
+Padding-right
+Padding-bottom
+Padding-left
+Ex:
+div {
+padding-top: 60px;
+padding-right: 40px;
+padding-bottom: 50px;
+padding-left: 70px;
+margin-top: auto; margin-left: auto; }
+
+
+41.What is CSS Opacity?
+
+The opacity CSS property sets the opacity of an element. Opacity is the degree to which content
+behind an element is hidden, and is the opposite of transparency.
+
+
+44.Compare RGB values with Hexadecimal color codes ?
+
+A color can be specified in two ways:
+1) A color is represented by 6 characters i.e. hexadecimal color coding. It is a combination of
+numbers and letters and is preceded by #.
+Ex: g {color: #00cjfi}
+
+2) A color is represented by a mixture of red, green and blue. The value of a color can also be
+specified.
+Ex: rgb(r,g,b): In this type the values can be in between the integers 0 and 255.
+rgb(r%,g%,b%): red, green and blue percentage is shown.
+
+57.Explain the difference between visibility: hidden; and display: none;?
+visibility: hidden- Simply hides the element but it will occupy space and affect the layout of the
+document.
+display:none- Removes the element from the normal layout flow (causes DOM reflow). It will
+not affect the layout of the document nor occupy space.
+
+58.What is the difference between border-box and content-box?
+content-box – Default box-sizing property. The width and height properties (and min/max
+properties) includes only the content. Border and padding are not included.
+border-box – The width and height properties (and min/max properties) includes content,
+padding and border.
+
+cm- centimeters
+em- elements (i.e., relative to the font-size of the element; e.g., 2 em means 2 times the current
+font size)
+in- inches
+mm- millimeters
+pc- picas (1 pc = 12 pt = 1/6th of an inch)
+pt- points (1 pt = 1/72nd of an inch)
+px- pixels (1 px = 1/96th of an inch)
+
+
+
+The display property specifies the display behavior (the type of rendering box) of an element.
+
+Property values:
+display: none;
+display: inline;
+display: block;
+display: inline-block;
+66.How can the gap under the image be removed?
+As images being inline elements are treated same as texts, so there is a gap left, which can be
+removed.
+Ex:
+&lt;figure&gt;
+&lt;img style=&quot;display: block&quot; src=&quot;...&quot; alt=&quot;&quot;&gt;
+
+
+71.Define CSS frameworks?
+CSS frameworks are pre-planned libraries, which allow much easier and more standard-
+compliant designing and styling of a webpage by using CSS language.
+72.Compare Grouping and Nesting in CSS?
+Grouping: In grouping, the code can be reduced by literally grouping selectors that have the
+same properties or values.
+Nesting: In nesting, a selector is specified within another selector.
+73.What are CSS gradients?
+Gradients in CSS allows us to create a smooth transformation between two or more colors.
+There are two types of gradients we can use in CSS:
+1) Linear Gradient and
+2)Radial Gradient.
+74.How would you set a h2 and h3 to have the same styling?
+We can set multiple elements with the same style by separating items with a comma (,).
+Example:
+h2, h3 {
+color: yellow;}
 
     </script>
 </body>
